@@ -9,28 +9,25 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0a0e1a;
+  background-color: #0b0f19;
   color: #e2e8f0;
-  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Scrollbar */
+/* Scrollbars */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0f1629; }
-::-webkit-scrollbar-thumb { background: #1e2d50; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #00d4ff44; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-/* Grid texture overlay */
+/* Subtle dark grid */
 body::before {
   content: '';
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(rgba(0,212,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.015) 1px, transparent 1px);
-  background-size: 40px 40px;
+  inset: 0;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: 0;
 }
@@ -40,92 +37,88 @@ body::before {
   z-index: 1;
 }
 
-/* Status colors */
-.status-normal    { color: #00ff88; }
-.status-warning   { color: #ffaa00; }
-.status-critical  { color: #ff6600; }
-.status-breach    { color: #ff2244; }
-.status-severe    { color: #ff2244; }
-
-/* Severity badges */
-.badge-warning  { background: #ffaa0022; border: 1px solid #ffaa0066; color: #ffaa00; }
-.badge-critical { background: #ff660022; border: 1px solid #ff660066; color: #ff6600; }
-.badge-severe   { background: #ff224422; border: 1px solid #ff224466; color: #ff2244; }
-.badge-low      { background: #00ff8822; border: 1px solid #00ff8866; color: #00ff88; }
-.badge-moderate { background: #ffaa0022; border: 1px solid #ffaa0066; color: #ffaa00; }
-.badge-high     { background: #ff660022; border: 1px solid #ff660066; color: #ff6600; }
-
-/* Pulse animations */
-@keyframes pulse-ring {
-  0%   { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2.5); opacity: 0; }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
-}
-
-.animate-blink { animation: blink 1.2s ease-in-out infinite; }
-
-/* Glass panels */
+/* Professional Card Panels */
 .glass-panel {
-  background: rgba(15, 22, 41, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(30, 45, 80, 0.8);
+  background: #111827;
+  border: 1px solid #1f2937;
   border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
 }
 
-/* Recharts override */
+/* Status Badges */
+.badge-warning  { background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.3); color: #eab308; }
+.badge-critical { background: rgba(249, 115, 22, 0.12); border: 1px solid rgba(249, 115, 22, 0.3); color: #f97316; }
+.badge-severe   { background: rgba(239, 68, 68, 0.12);  border: 1px solid rgba(239, 68, 68, 0.3);  color: #ef4444; }
+.badge-low      { background: rgba(34, 197, 94, 0.12);  border: 1px solid rgba(34, 197, 94, 0.3);  color: #22c55e; }
+
+/* Recharts Grid */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-  stroke: rgba(30,45,80,0.5) !important;
+  stroke: #1f2937 !important;
 }
 
 /* =========================================================
-   DAY / LIGHT MODE OVERRIDES
+   CLEAN ENTERPRISE DAY / LIGHT MODE
    ========================================================= */
 
 html.light-mode body {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
   color: #0f172a !important;
 }
 
 html.light-mode body::before {
-  background-image:
-    linear-gradient(rgba(0, 100, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 100, 255, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(100, 116, 139, 0.12) 1px, transparent 0);
 }
 
 html.light-mode .glass-panel {
   background: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05) !important;
 }
 
-/* Light mode text overrides */
+/* Ensure ALL headers and text are dark & readable in Light Mode */
 html.light-mode h1,
 html.light-mode h2,
-html.light-mode h3 {
-  color: #0f172a !important;
+html.light-mode h3,
+html.light-mode p,
+html.light-mode span,
+html.light-mode div {
+  /* Override inline styling colors that make text invisible */
+  text-shadow: none !important;
 }
 
-html.light-mode .text-white {
-  color: #0f172a !important;
-}
+html.light-mode h1 { color: #0f172a !important; }
+html.light-mode h2 { color: #1e293b !important; }
 
-html.light-mode .text-slate-400,
-html.light-mode .text-slate-500 {
+/* Subtitle and timestamp fix */
+html.light-mode [style*="color: #64748b"],
+html.light-mode [style*="color: #334155"],
+html.light-mode [style*="color: #1e293b"] {
   color: #475569 !important;
 }
 
-/* Scrollbar in light mode */
-html.light-mode ::-webkit-scrollbar-track { background: #e2e8f0; }
-html.light-mode ::-webkit-scrollbar-thumb { background: #94a3b8; }
-html.light-mode ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+html.light-mode [style*="color: #94a3b8"] {
+  color: #1e293b !important;
+}
 
-/* Chart lines in light mode */
+/* Table cells in light mode */
+html.light-mode table th {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light-mode table td {
+  color: #0f172a !important;
+  border-color: #f1f5f9 !important;
+}
+
+/* Terminal log hover */
+html.light-mode .hover\:bg-slate-900:hover {
+  background-color: #f1f5f9 !important;
+}
+
 html.light-mode .recharts-cartesian-grid-horizontal line,
 html.light-mode .recharts-cartesian-grid-vertical line {
-  stroke: rgba(203, 213, 225, 0.8) !important;
+  stroke: #e2e8f0 !important;
 }

@@ -1,124 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0b0f19;
-  color: #e2e8f0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  min-height: 100vh;
-}
-
-/* Scrollbars */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #334155; }
-
-/* Subtle dark grid */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 0);
-  background-size: 24px 24px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-#root {
-  position: relative;
-  z-index: 1;
-}
-
-/* Professional Card Panels */
-.glass-panel {
-  background: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
-}
-
-/* Status Badges */
-.badge-warning  { background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.3); color: #eab308; }
-.badge-critical { background: rgba(249, 115, 22, 0.12); border: 1px solid rgba(249, 115, 22, 0.3); color: #f97316; }
-.badge-severe   { background: rgba(239, 68, 68, 0.12);  border: 1px solid rgba(239, 68, 68, 0.3);  color: #ef4444; }
-.badge-low      { background: rgba(34, 197, 94, 0.12);  border: 1px solid rgba(34, 197, 94, 0.3);  color: #22c55e; }
-
-/* Recharts Grid */
-.recharts-cartesian-grid-horizontal line,
-.recharts-cartesian-grid-vertical line {
-  stroke: #1f2937 !important;
-}
-
-/* =========================================================
-   CLEAN ENTERPRISE DAY / LIGHT MODE
-   ========================================================= */
-
-html.light-mode body {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-}
-
-html.light-mode body::before {
-  background-image: radial-gradient(rgba(100, 116, 139, 0.12) 1px, transparent 0);
-}
-
-html.light-mode .glass-panel {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05) !important;
-}
-
-/* Ensure ALL headers and text are dark & readable in Light Mode */
-html.light-mode h1,
-html.light-mode h2,
-html.light-mode h3,
-html.light-mode p,
-html.light-mode span,
-html.light-mode div {
-  /* Override inline styling colors that make text invisible */
-  text-shadow: none !important;
-}
-
-html.light-mode h1 { color: #0f172a !important; }
-html.light-mode h2 { color: #1e293b !important; }
-
-/* Subtitle and timestamp fix */
-html.light-mode [style*="color: #64748b"],
-html.light-mode [style*="color: #334155"],
-html.light-mode [style*="color: #1e293b"] {
-  color: #475569 !important;
-}
-
-html.light-mode [style*="color: #94a3b8"] {
-  color: #1e293b !important;
-}
-
-/* Table cells in light mode */
-html.light-mode table th {
-  background-color: #f1f5f9 !important;
-  color: #334155 !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light-mode table td {
-  color: #0f172a !important;
-  border-color: #f1f5f9 !important;
-}
-
-/* Terminal log hover */
-html.light-mode .hover\:bg-slate-900:hover {
-  background-color: #f1f5f9 !important;
-}
-
-html.light-mode .recharts-cartesian-grid-horizontal line,
-html.light-mode .recharts-cartesian-grid-vertical line {
-  stroke: #e2e8f0 !important;
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golden Corridor — Industrial Pollution Monitor</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
